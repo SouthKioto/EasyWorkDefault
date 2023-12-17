@@ -1,0 +1,17 @@
+﻿<Application x:Class="EasyWorkDefault.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:EasyWorkDefault"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/SearchBarTeme.xaml"/>
+                <ResourceDictionary Source="Themes/LoginLogoutButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/LoginRegisterTextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/PasswordBoxTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

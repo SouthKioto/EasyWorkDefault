@@ -1,0 +1,76 @@
+﻿<Page x:Class="EasyWorkDefault.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasyWorkDefault.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="MainPage">
+
+    <Border CornerRadius="20"
+     Background="#366bd6">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+
+            <Label Content="EasyWork"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            FontSize="30"
+            Background="#325ea8"
+            />
+
+            <StackPanel Grid.Row="1" Background="#325ea8">
+                <RadioButton Content="Home"
+                      Height="50"
+                      FontSize="15"
+                      Style="{StaticResource MenuButtonTheme}"
+                      IsChecked="True"/>
+
+                <RadioButton Content="Discover"
+                      Height="50"
+                      FontSize="15"
+                      Style="{StaticResource MenuButtonTheme}"/>
+
+
+                <RadioButton Content="Your Work"
+                      Height="50"
+                      FontSize="15"
+                      Style="{StaticResource MenuButtonTheme}"/>
+
+                <Button Content="Login / Register"
+                      Height="50"
+                      FontSize="15"
+                      Style="{StaticResource LoginLogoutButtonTheme}"
+                      Margin="0,325,0,0"
+                      Click="GoToLoginPage"/>
+            </StackPanel>
+
+            <TextBox Grid.Column="1"
+              Width="250"
+              Height="40"
+              VerticalContentAlignment="Center"
+              HorizontalAlignment="Left"
+              Margin="5"
+              Style="{StaticResource SearchBarTheme}"
+              />
+
+
+            <Grid Grid.Row="1" 
+           Grid.Column="1" 
+           Margin="10">
+
+
+            </Grid>
+        </Grid>
+    </Border>
+</Page>
