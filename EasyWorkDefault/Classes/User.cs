@@ -15,7 +15,7 @@ namespace EasyWorkDefault.Classes
         public DateTime BirthDate { get; set; }
         public string? Email { get; set; }
         public int TelNumber { get; set; }
-        public Blob ProfImage { get; set; }
+        public byte[] ProfileImagePath { get; set; }
         public string? ResidencePlace { get; set; }
         public string? CurrPosition { get; set; }
         public string? CurrPositionDescription { get; set; }
@@ -28,10 +28,11 @@ namespace EasyWorkDefault.Classes
         public List<int> Links { get; set; }
         public string? PasswordHash { get; set; }
         public bool IsAdmin { get; set; }
+        public bool IsLoggedIn { get; set; }
 
         public User()
         {
-            
+            IsLoggedIn = false; 
         }
     }
 }

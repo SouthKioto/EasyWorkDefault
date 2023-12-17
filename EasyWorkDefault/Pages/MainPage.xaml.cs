@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyWorkDefault.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,45 @@ namespace EasyWorkDefault.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+        protected string imie { get; set; }
+        protected string nazwisko { get; set; }
+        protected string email { get; set; }
+        protected bool isAdmin { get; set; }
+        protected byte[] profImage { get; set; }
+        protected bool isLogget { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
+            UpdateUserUI();
+        }
+
+        public MainPage(User user, bool isLogged)
+        {
+            InitializeComponent();
+
+            this.imie = user.Name;
+            this.nazwisko = user.Surname;
+            this.email = user.Email;
+            this.isAdmin = user.IsAdmin;
+            this.profImage = user.ProfileImagePath;
+            this.isLogget = isLogged;
+
+            UpdateUserUI();
+        }
+
+        public void UpdateUserUI()
+        {
+            if (UserManager.IsUserLoggedIn())
+            {
+                UserUiButton.Content = "Przejdź do profilu";
+                UserUiButton.Click += GoToProfilePage;
+            }
+            else
+            {
+                UserUiButton.Content = "Zaloguj / Zarejestruj";
+                UserUiButton.Click += GoToLoginPage;
+            }
         }
 
         private void GoToLoginPage(object sender, RoutedEventArgs e)
@@ -30,6 +67,14 @@ namespace EasyWorkDefault.Pages
             if (App.Current.MainWindow is MainWindow mainWindow)
             {
                 mainWindow.ChangePage(new LoginPage());
+            }
+        }
+
+        private void GoToProfilePage(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ChangePage(new ProfilePage());
             }
         }
     }

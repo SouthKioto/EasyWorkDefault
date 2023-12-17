@@ -4,8 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EasyWorkDefault.Data
 {
@@ -125,6 +129,54 @@ namespace EasyWorkDefault.Data
             }
         }
 
+        public static User GetUserFromDatabase(string userEmail)
+        {
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "easywork.db");
+
+            using (var db = new SqliteConnection($"Filename={dbPath}"))
+            {
+                db.Open();
+
+                var selectUserCommand = new SqliteCommand();
+                selectUserCommand.Connection = db;
+
+                selectUserCommand.CommandText = @"
+                    SELECT name, surname, email, password_hash, isAdmin, prof_image
+                    FROM users
+                    WHERE email = @userEmail;";
+
+                selectUserCommand.Parameters.AddWithValue("@userEmail", userEmail);
+
+                using (var reader = selectUserCommand.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string name = reader.GetString(reader.GetOrdinal("name"));
+                        string surname = reader.GetString(reader.GetOrdinal("surname"));
+                        string email = reader.GetString(reader.GetOrdinal("email"));
+                        string passwordHash = reader.GetString(reader.GetOrdinal("password_hash"));
+                        bool isAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"));
+
+                        byte[] profileImageBytes = reader["prof_image"] as byte[];
+
+                        User retrievedUser = new User
+                        {
+                            Name = name,
+                            Surname = surname,
+                            Email = email,
+                            PasswordHash = passwordHash,
+                            IsAdmin = isAdmin,
+                            ProfileImagePath = profileImageBytes,
+                        };
+
+                        return retrievedUser;
+                    }
+                }
+            }
+            return null;
+        }
+
+
         public static void SaveUserToDatabase(User newUser)
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "easywork.db");
@@ -133,30 +185,28 @@ namespace EasyWorkDefault.Data
             {
                 db.Open();
 
-                string defaultImagePath = Path.Combine("Images", "default_image.jpg");
+
+                byte[] imageBytes;
+
+                string defaultImagePath = Path.Combine("Images", "default_image.png");
+                imageBytes = File.ReadAllBytes(defaultImagePath);
 
                 var insertUserCommand = new SqliteCommand();
                 insertUserCommand.Connection = db;
 
                 insertUserCommand.CommandText = @"
-            INSERT INTO users (name, surname, email, password_hash, isAdmin, profile_image_path)
-            VALUES (@name, @surname, @email, @passwordHash, @isAdmin, @profileImagePath);";
+                    INSERT INTO users (name, surname, email, password_hash, isAdmin, prof_image)
+                    VALUES (@name, @surname, @email, @passwordHash, @isAdmin, @profileImageBytes);";
 
                 insertUserCommand.Parameters.AddWithValue("@name", newUser.Name);
                 insertUserCommand.Parameters.AddWithValue("@surname", newUser.Surname);
                 insertUserCommand.Parameters.AddWithValue("@email", newUser.Email);
                 insertUserCommand.Parameters.AddWithValue("@passwordHash", newUser.PasswordHash);
                 insertUserCommand.Parameters.AddWithValue("@isAdmin", newUser.IsAdmin);
-                insertUserCommand.Parameters.AddWithValue("@profileImagePath", defaultImagePath);
+                insertUserCommand.Parameters.AddWithValue("@profileImageBytes", imageBytes);
 
                 insertUserCommand.ExecuteNonQuery();
             }
-        }
-
-
-        public static void GetUserFromDatabase()
-        {
-
         }
     }
 }

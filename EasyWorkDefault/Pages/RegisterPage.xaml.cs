@@ -35,43 +35,52 @@ namespace EasyWorkDefault.Pages
             string password = PasswordTextBox.Text;
             string repeatPassword = RepeatPasswordTextBox.Text;
 
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname) ||
-                string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
-                string.IsNullOrEmpty(repeatPassword))
+            User existingUser = Database.GetUserFromDatabase(email);
+            if (existingUser == null)
             {
-                MessageBox.Show("Dane: " + "\n" + name + "\n" + surname + "\n" + email + "\n" + password + "\n" + repeatPassword);
-                MessageBox.Show("Proszę uzupełnic pola", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                if (!email.Contains('@'))
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname) ||
+                                string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) ||
+                                string.IsNullOrEmpty(repeatPassword))
                 {
-                    MessageBox.Show("Proszę o podanie poprawnego emailu", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                   
+                    MessageBox.Show("Proszę uzupełnic pola", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    if (password != repeatPassword)
+                    if (!email.Contains('@'))
                     {
-                        MessageBox.Show("Haslo powtorzone ma być takie samo jak glowne", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Proszę o podanie poprawnego emailu", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     else
                     {
-                        User newUser = new User
+                        if (password != repeatPassword)
                         {
-                            Name = name,
-                            Surname = surname,
-                            Email = email,
-                            PasswordHash = password,
-                            IsAdmin = false
-                        };
-                        MessageBox.Show("Pomyślnie zarejestrowano", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        Database.SaveUserToDatabase(newUser);
+                            MessageBox.Show("Haslo powtorzone ma być takie samo jak glowne", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                        {
+                            User newUser = new User
+                            {
+                                Name = name,
+                                Surname = surname,
+                                Email = email,
+                                PasswordHash = password,
+                                IsAdmin = false
+                            };
+                            MessageBox.Show("Pomyślnie zarejestrowano", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                            Database.SaveUserToDatabase(newUser);
 
-                        GoToLoginPage();
+                            GoToLoginPage();
+                        }
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Taki użytkownik istnieje w bazie danych", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            
         }
 
         private void GoToRegisterPage(object sender, RoutedEventArgs e)

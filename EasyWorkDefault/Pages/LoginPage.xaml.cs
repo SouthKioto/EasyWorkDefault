@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EasyWorkDefault.Classes;
+using EasyWorkDefault.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace EasyWorkDefault.Pages
 {
@@ -20,6 +23,8 @@ namespace EasyWorkDefault.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        
+
         public LoginPage()
         {
             InitializeComponent();
@@ -27,10 +32,7 @@ namespace EasyWorkDefault.Pages
 
         private void BackGoMainPage(object sender, RoutedEventArgs e)
         {
-            if (App.Current.MainWindow is MainWindow mainWindow)
-            {
-                mainWindow.ChangePage(new MainPage());
-            }
+            BackToMainPage();
         }
 
         private void GoToRegisterPage(object sender, RoutedEventArgs e)
@@ -43,7 +45,34 @@ namespace EasyWorkDefault.Pages
 
         private void LoginAndBackToMainPage(object sender, RoutedEventArgs e)
         {
+            string email = emailTextBox.Text;
+            User existingUser = Database.GetUserFromDatabase(email);
 
+            if (existingUser != null)
+            {
+                UserManager.SetCurrentUser(existingUser);
+                BackToMainPageExistUser(existingUser);
+            }
+            else
+            {
+                MessageBox.Show("Użytkownik nie istnieje w bazie", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        void BackToMainPageExistUser(User user)
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {                
+                mainWindow.ChangePage(new MainPage(user, true));
+            }
+        }
+
+        void BackToMainPage()
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ChangePage(new MainPage());
+            }
         }
     }
 }

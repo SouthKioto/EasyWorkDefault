@@ -47,12 +47,12 @@
                       FontSize="15"
                       Style="{StaticResource MenuButtonTheme}"/>
 
-                <Button Content="Login / Register"
+                <Button x:Name="UserUiButton"
                       Height="50"
                       FontSize="15"
                       Style="{StaticResource LoginLogoutButtonTheme}"
-                      Margin="0,325,0,0"
-                      Click="GoToLoginPage"/>
+                      Margin="0,325,0,0"/>
+
             </StackPanel>
 
             <TextBox Grid.Column="1"
