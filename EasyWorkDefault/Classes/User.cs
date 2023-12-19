@@ -22,17 +22,16 @@ namespace EasyWorkDefault.Classes
         public string? CareerSummary { get; set; }
         public string? WorkExperience { get; set; }
         public string? Education { get; set; }
-        public List<string> LanguageSkills { get; set; }
+        public List<LanguageSkill> LanguageSkills { get; set; }
         public string? Skills { get; set; }
         public string? Courses { get; set; }
         public List<int> Links { get; set; }
         public string? PasswordHash { get; set; }
         public bool IsAdmin { get; set; }
-        public bool IsLoggedIn { get; set; }
 
         public User()
         {
-            IsLoggedIn = false; 
+            LanguageSkills = new List<LanguageSkill>();
         }
     }
 }

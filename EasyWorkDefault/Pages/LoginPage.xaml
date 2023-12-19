@@ -49,8 +49,8 @@
 
 
                 <StackPanel Margin="0,0,0,20">
-                    <Label HorizontalAlignment="Center" Content="Password" Foreground="White" FontSize="20" x:Name="passwordTextBox"/>
-                    <TextBox Style="{StaticResource LoginRegisterTextBoxTheme}"/>
+                    <Label HorizontalAlignment="Center" Content="Password" Foreground="White" FontSize="20"/>
+                    <TextBox Style="{StaticResource LoginRegisterTextBoxTheme}" x:Name="passwordTextBox"/>
                 </StackPanel>
 
                 <StackPanel>

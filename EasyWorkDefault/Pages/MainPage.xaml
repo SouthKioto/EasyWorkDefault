@@ -65,12 +65,13 @@
               />
 
 
-            <Grid Grid.Row="1" 
-           Grid.Column="1" 
-           Margin="10">
+            <Frame Grid.Row="1" 
+                   Grid.Column="1" 
+                   Margin="10"
+                   x:Name="mainWindowFrame">
 
 
-            </Grid>
+            </Frame>
         </Grid>
     </Border>
 </Page>

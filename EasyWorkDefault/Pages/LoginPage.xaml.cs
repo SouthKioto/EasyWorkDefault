@@ -50,8 +50,16 @@ namespace EasyWorkDefault.Pages
 
             if (existingUser != null)
             {
-                UserManager.SetCurrentUser(existingUser);
-                BackToMainPageExistUser(existingUser);
+                if(existingUser.PasswordHash == passwordTextBox.Text)
+                {
+                    UserManager.SetCurrentUser(existingUser);
+                    BackToMainPageExistUser(existingUser);
+                }
+                else
+                {
+                    MessageBox.Show("Nie poprawne hasło", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             }
             else
             {

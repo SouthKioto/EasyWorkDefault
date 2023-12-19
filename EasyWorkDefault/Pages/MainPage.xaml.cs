@@ -1,4 +1,5 @@
 ﻿using EasyWorkDefault.Classes;
+using EasyWorkDefault.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,9 @@ namespace EasyWorkDefault.Pages
         {
             InitializeComponent();
             UpdateUserUI();
+
+            AdvertisementPresentationMainView advertisementView = new AdvertisementPresentationMainView();
+            mainWindowFrame.Content = advertisementView;
         }
 
         public MainPage(User user, bool isLogged)

@@ -1,6 +1,8 @@
 ﻿using EasyWorkDefault.Classes;
+using EasyWorkDefault.View;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +29,10 @@ namespace EasyWorkDefault.Pages
         {
             InitializeComponent();
             currentUser = UserManager.CurrentUser;
+            RadioButtonProfile.Checked += RadioButtonProfile_Checked;
+            RadioButtonProfile_Checked(null, null);
 
-            Title.Text = "Witaj" + currentUser.Name + "!";
+            CreateAdvertRadio.Checked += RadioButtonCreateAdvert_Checked;
         }
 
         private void LogOutAndBackToMainPage(object sender, RoutedEventArgs e)
@@ -49,11 +53,14 @@ namespace EasyWorkDefault.Pages
             }
         }
 
-        private void UpdateUserProfile()
+        private void RadioButtonProfile_Checked(object sender, RoutedEventArgs e)
         {
+            PageMainView.Navigate(new UserProfileView(currentUser));
+        }
 
-           
-            
+        private void RadioButtonCreateAdvert_Checked(object sender, RoutedEventArgs e)
+        {
+            PageMainView.Navigate(new AddAdvertView(currentUser));
         }
     }
 }

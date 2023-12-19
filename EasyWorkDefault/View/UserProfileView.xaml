@@ -1,0 +1,114 @@
+﻿<Page x:Class="EasyWorkDefault.View.UserProfileView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasyWorkDefault.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserProfileView">
+
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Imie i nazwisko" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userNameSurname" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Email" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userEmail" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Data urodzenia" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userBirthDate" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Numer telefonu" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userTelumber" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Miejsce zamieszkania" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userResidencePlace" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Kraj zamieszkania" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userCurrPosition" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Opis miejsca zamieszkania" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userCurrPositionDescription" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="8" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Podsumowanie kariery" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userCareerSummary" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="9" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Doświadczenie" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userWorkExpeience" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="10" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Edukacja (miejsca)" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userEducation" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="11" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Umiejętności językowe" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userLanguageSkills" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="12" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Umiejętności" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userSkills" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="13" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Kursy" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userCourses" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="14" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Strony internetowe" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="userLinks" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Edytuj Profil"  Style="{StaticResource LoginLogoutButtonTheme}" Width="200" FontSize="20" Click="EditProfile_Window"/>
+                <Button Content="Usuń konto" Style="{StaticResource LoginLogoutButtonTheme}" Width="200" FontSize="20"/>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>
