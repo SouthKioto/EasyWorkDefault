@@ -24,5 +24,13 @@ namespace EasyWorkDefault.Pages
         {
             InitializeComponent();
         }
+
+        private void BackToMain(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ChangePage(new MainPage());
+            }
+        }
     }
 }

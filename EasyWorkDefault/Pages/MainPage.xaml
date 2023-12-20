@@ -47,11 +47,19 @@
                       FontSize="15"
                       Style="{StaticResource MenuButtonTheme}"/>
 
+                <Button x:Name="AdminPageButton"
+                        Height="50"
+                        FontSize="15"
+                        Style="{StaticResource LoginLogoutButtonTheme}"
+                        Margin="0,260,0,0"
+                        Visibility="Hidden"
+                        Content="Admin Page"/>            
+
                 <Button x:Name="UserUiButton"
                       Height="50"
                       FontSize="15"
                       Style="{StaticResource LoginLogoutButtonTheme}"
-                      Margin="0,325,0,0"/>
+                      Margin="0,15,0,0"/>
 
             </StackPanel>
 

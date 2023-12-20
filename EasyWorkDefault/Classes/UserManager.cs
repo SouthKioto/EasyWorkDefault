@@ -24,5 +24,10 @@ namespace EasyWorkDefault.Classes
         {
             return CurrentUser != null;
         }
+
+        public static bool UserIsAdmin()
+        {
+            return CurrentUser.IsAdmin;
+        }
     }
 }

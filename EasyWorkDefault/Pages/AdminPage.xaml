@@ -8,7 +8,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <StackPanel>
-        <TextBlock Text="Strona administratorska" FontSize="50" HorizontalAlignment="Center"/>
-    </StackPanel>
+    <Border CornerRadius="20" Background="#366bd6">
+        <StackPanel>
+            <Label Content="AdminPage" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Click="BackToMain" Content="Back to MainPage"/>
+        </StackPanel>
+    </Border>
 </Page>

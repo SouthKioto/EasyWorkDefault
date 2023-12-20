@@ -55,7 +55,12 @@ namespace EasyWorkDefault.Pages
         public void UpdateUserUI()
         {
             if (UserManager.IsUserLoggedIn())
-            {
+            {   
+                if(UserManager.UserIsAdmin())
+                {
+                    AdminPageButton.Visibility = Visibility.Visible;
+                    AdminPageButton.Click += GoToAdminPage;
+                }
                 UserUiButton.Content = "Przejdź do profilu";
                 UserUiButton.Click += GoToProfilePage;
             }
@@ -79,6 +84,14 @@ namespace EasyWorkDefault.Pages
             if (App.Current.MainWindow is MainWindow mainWindow)
             {
                 mainWindow.ChangePage(new ProfilePage());
+            }
+        }
+
+        private void GoToAdminPage(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ChangePage(new AdminPage());
             }
         }
     }
