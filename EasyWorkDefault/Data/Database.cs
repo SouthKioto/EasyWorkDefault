@@ -121,8 +121,8 @@ namespace EasyWorkDefault.Data
                         ON DELETE CASCADE
                 );
 
-                INSERT INTO users (name, surname, email, password_hash, isAdmin)
-                VALUES ('admin', 'admin', 'admin@gmail.com', 'admin', 1);";
+                    INSERT INTO users (name, surname, email, password_hash, isAdmin)
+                    VALUES ('admin', 'admin', 'admin@gmail.com', 'admin', 1);";
 
                     createTableCommand.ExecuteNonQuery();
                 }

@@ -58,11 +58,15 @@ namespace EasyWorkDefault.View
 
         private void UpdateAdvertisements()
         {
+
             var advertisements = Database.GetAllAdvertisements();
 
             Advertisements.Clear();
-            Advertisements.Add(advertisements[currentAdvertisementIndex]);
-            
+
+            if (advertisements != null && advertisements.Any())
+            {
+                Advertisements.Add(advertisements[currentAdvertisementIndex]);
+            }
         }
     }
 }

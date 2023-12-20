@@ -47,24 +47,32 @@ namespace EasyWorkDefault.Pages
         {
             string email = emailTextBox.Text;
             User existingUser = Database.GetUserFromDatabase(email);
-
-            if (existingUser != null)
+            
+            if(!String.IsNullOrEmpty(emailTextBox.Text) && !String.IsNullOrEmpty(passwordTextBox.Text))
             {
-                if(existingUser.PasswordHash == passwordTextBox.Text)
+                if (existingUser != null)
                 {
-                    UserManager.SetCurrentUser(existingUser);
-                    BackToMainPageExistUser(existingUser);
+                    if (existingUser.PasswordHash == passwordTextBox.Text)
+                    {
+                        UserManager.SetCurrentUser(existingUser);
+                        BackToMainPageExistUser(existingUser);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie poprawne hasło", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Nie poprawne hasło", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Użytkownik nie istnieje w bazie", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-
             }
             else
             {
-                MessageBox.Show("Użytkownik nie istnieje w bazie", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Proszę wypełnić wszyskte pola", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         void BackToMainPageExistUser(User user)
