@@ -175,6 +175,47 @@ namespace EasyWorkDefault.Data
             return null;
         }
 
+        public static List<User> GetAllUsers()
+        {
+            List<User> users = new List<User>();
+
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "bazadanychpraca.db");
+
+            using (var db = new SqliteConnection($"Filename={dbPath}"))
+            {
+                db.Open();
+
+                var selectUsersCommand = new SqliteCommand();
+                selectUsersCommand.Connection = db;
+
+                selectUsersCommand.CommandText = @"
+                        SELECT *
+                        FROM users;";
+
+                using (var reader = selectUsersCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int user_id = reader.GetInt32(reader.GetOrdinal("user_id"));
+                        string user_name = reader.GetString(reader.GetOrdinal("name"));
+                        string user_surname = reader.GetString(reader.GetOrdinal("surname"));
+
+
+                        User user = new User
+                        {
+                            ID = user_id,
+                            Name = user_name,
+                            Surname = user_surname,
+                        };
+
+                        users.Add(user);
+                    }
+                }
+            }
+
+            return users;
+        }
+
         public static void SaveUserToDatabase(User newUser)
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "bazadanychpraca.db");
@@ -482,13 +523,17 @@ namespace EasyWorkDefault.Data
                 {
                     while (reader.Read())
                     {
+                        int annouc_id = reader.GetInt32(reader.GetOrdinal("notification_of_work_id"));
+                        int user_id = reader.GetInt32(reader.GetOrdinal("user_id"));
                         string title = reader.GetString(reader.GetOrdinal("notification_title"));
                         string description = reader.GetString(reader.GetOrdinal("notification_descript"));
 
                         NotificationoOfWork advertisement = new NotificationoOfWork
                         {
+                            NotificationId = annouc_id,
                             Notification_title = title,
                             notification_descript = description,
+                            User_Id = user_id,
                         };
 
                         advertisements.Add(advertisement);

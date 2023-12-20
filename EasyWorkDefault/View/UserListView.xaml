@@ -1,0 +1,34 @@
+﻿<Page x:Class="EasyWorkDefault.View.UserListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasyWorkDefault.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserListView">
+
+    <Grid>
+        <ListView x:Name="UserListView_Display">
+
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="First Name" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Surname}" Width="100">
+                        <GridViewColumnHeader>Last Name
+                            <GridViewColumnHeader.ContextMenu>
+                                <ContextMenu Name="LastNameCM">
+                                    <MenuItem Header="Ascending" />
+                                    <MenuItem Header="Descending" />
+                                </ContextMenu>
+                            </GridViewColumnHeader.ContextMenu>
+                        </GridViewColumnHeader>
+                    </GridViewColumn>
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ID}" Header="Account Id" Width="100"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

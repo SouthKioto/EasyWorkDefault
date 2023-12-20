@@ -44,6 +44,7 @@ namespace EasyWorkDefault.View
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+
             if (Advertisements.Any())
             {
                 currentAdvertisementIndex = (currentAdvertisementIndex + 1) % Advertisements.Count;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyWorkDefault.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,14 +24,25 @@ namespace EasyWorkDefault.Pages
         public AdminPage()
         {
             InitializeComponent();
+            UserListViewRadioButton(null, null);
         }
 
-        private void BackToMain(object sender, RoutedEventArgs e)
+        private void BackToMainPage(object sender, RoutedEventArgs e)
         {
             if (App.Current.MainWindow is MainWindow mainWindow)
             {
                 mainWindow.ChangePage(new MainPage());
             }
+        }
+
+        private void UserListViewRadioButton(object sender, RoutedEventArgs e)
+        {
+            AdminPageView.Navigate(new UserListView());
+        }
+
+        private void AdvertListViewRadioButton(object sender, RoutedEventArgs e)
+        {
+            AdminPageView.Navigate(new AnnoucementListView());
         }
     }
 }
