@@ -94,5 +94,23 @@ namespace EasyWorkDefault.Pages
                 mainWindow.ChangePage(new AdminPage());
             }
         }
+
+        private void Search_KeyDown_SearchPage(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                string searchText = ((TextBox)sender).Text;
+                SearchBar.Focus();
+                OpenSearchPage(searchText);
+            }
+        }
+
+        private void OpenSearchPage(string searchText)
+        {
+            if (App.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ChangePage(new SearchPage(searchText));
+            }
+        }
     }
 }

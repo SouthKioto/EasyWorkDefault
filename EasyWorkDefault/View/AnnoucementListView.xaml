@@ -8,7 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AnnoucementListView">
 
-    <Grid>
+    <StackPanel>
+        <Button Content="Delete selected Annoucement" Click="RemoveAnnoucementDataFromDatabase"/>
+        <Button Content="Edit selected Annoucement" Click="EditAnnoucementDataFromDatabase"/>
         <ListView x:Name="AnnoucementListView_Display" MouseDoubleClick="AnnoucementListView_Display_Details">
             <ListView.View>
                 <GridView>
@@ -28,5 +30,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-    </Grid>
+    </StackPanel>
 </Page>

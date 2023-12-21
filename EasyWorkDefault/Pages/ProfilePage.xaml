@@ -54,12 +54,18 @@
                       FontSize="15"
                       Style="{StaticResource MenuButtonTheme}"/>
 
+                <RadioButton Content="Obserwowane"
+                             Height="50"
+                             FontSize="15"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="DisplayLikedAnnoucemends"/>
+
                 <RadioButton Content="Ustawienia"
                       Height="50"
                       FontSize="15"
                       Style="{StaticResource MenuButtonTheme}"/>
 
-                <StackPanel Margin="0,225,0,0">
+                <StackPanel Margin="0,170,0,0">
                     <Button Content="Wyloguj"
                             Height="50"
                             FontSize="15"

@@ -22,7 +22,7 @@ namespace EasyWorkDefault.Classes
         public string? CareerSummary { get; set; }
         public string? WorkExperience { get; set; }
         public string? Education { get; set; }
-        public List<LanguageSkill> LanguageSkills { get; set; }
+        public string LanguageSkills { get; set; }
         public string? Skills { get; set; }
         public string? Courses { get; set; }
         public List<int> Links { get; set; }
@@ -31,7 +31,7 @@ namespace EasyWorkDefault.Classes
 
         public User()
         {
-            LanguageSkills = new List<LanguageSkill>();
+            
         }
     }
 }

@@ -11,88 +11,99 @@
     <ScrollViewer>
         <StackPanel>
             <StackPanel>
-                <TextBlock Text="Tytuł gołoszenia" FontSize="30"/>
-                <TextBox Height="30" x:Name="advertTitle_TextBox"/>
+                <TextBlock Text="Tytuł ogłoszenia" FontSize="30"/>
+                <TextBox x:Name="advertTitle_TextBox" Width="200" Height="30" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
-                <TextBlock Text="Opis gołoszenia" FontSize="30"/>
-                <TextBox Height="30" x:Name="advertDescribe_TextBox"/>
+                <TextBlock Text="Opis ogłoszenia" FontSize="30"/>
+                <TextBox  x:Name="advertDescribe_TextBox" Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Pozycja pracy (dodaj nową lub wybierz z listy)" FontSize="30"/>
-                <TextBox Height="30" x:Name="workPozition_TextBox"/>
+
+                <ComboBox x:Name="workPozition_ComboBox" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
+                    
+                </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Poziom pracy" FontSize="30"/>
-                <TextBox Height="30" x:Name="workLevel_TextBox"/>
+                <ComboBox x:Name="workLevel_ComboBox" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15"/>
+
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Typ kontraktu" FontSize="30"/>
 
-                <ComboBox x:Name="ConcraktTypeComboBox">
-                    <ComboBoxItem Content="Umowa o dzieło" IsSelected="True"></ComboBoxItem>
-                    <ComboBoxItem Content="umowa zlecenie"></ComboBoxItem>
-                    <ComboBoxItem Content="umowa agencyjna"></ComboBoxItem>
-                    <ComboBoxItem Content="kontrakt menedżerski"></ComboBoxItem>
+                <ComboBox x:Name="ConcraktTypeComboBox" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
+
                 </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Wymiary zatrudnienia" FontSize="30"/>
-                <TextBox Height="30" x:Name="dimensions_TextBox"/>
+                <ComboBox x:Name="dimensions_ComboBox" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
+
+                </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Typ pracy" FontSize="30"/>
-                <TextBox Height="30" x:Name="workType_TextBox"/>
+                <ComboBox x:Name="workType_ComboBox" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
+
+                </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Wysokość wypłaty (początkowa wartość)" FontSize="30"/>
-                <TextBox Height="30" x:Name="SalaryStart_TextBox"/>
+                <TextBox x:Name="SalaryStart_TextBox" Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Wysokość wypłaty (końcowa wartość)" FontSize="30"/>
-                <TextBox Height="30" x:Name="SalaryEnd_TextBox"/>
+                <TextBox x:Name="SalaryEnd_TextBox" Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Dni pracy" FontSize="30"/>
-                <TextBox x:Name="WorkDays_TextBox"/>
+                <ComboBox x:Name="WorkDays_ComboBox"  Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
+                    <ComboBoxItem Content="Pon-Sob"/>
+                    <ComboBoxItem Content="Pon-Pt"/>
+                    <ComboBoxItem Content="Pon-Czw"/>
+                    <ComboBoxItem Content="Pon-Śr"/>
+                    <ComboBoxItem Content="Pon-Wt"/>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Godziny pracy (początek pracy)" FontSize="30"/>
-                <TextBox Height="30" x:Name="WorkHoursStart_TextBox"/>
+                <TextBox x:Name="WorkHoursStart_TextBox"  Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Godziny pracy (koniec pracy)" FontSize="30"/>
-                <TextBox Height="30" x:Name="WorkHoursEnd_TextBox"/>
+                <TextBox x:Name="WorkHoursEnd_TextBox"  Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
-                <TextBlock Text="Data wygaśnięcia ogłoszenia gołoszenia" FontSize="30"/>
-                <DatePicker Height="30" x:Name="ExpiryAdvertDate_TextBox"/>
+                <TextBlock Text="Data wygaśnięcia ogłoszenia ogłoszenia" FontSize="30"/>
+                <DatePicker x:Name="ExpiryAdvertDate_TextBox"  Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Kategorie (dodaj lub wybierz z listy)" FontSize="30"/>
-                <TextBox x:Name="CatNameAdd_TextBox"/>
+                <TextBox x:Name="CatNameAdd_TextBox" Width="200" Height="100" HorizontalAlignment="Left"/>
 
-                <ComboBox x:Name="CatSelectAdd">
+                <ComboBox x:Name="CatSelectAdd" Width="200" Height="30" HorizontalAlignment="Left" FontSize="15">
 
                 </ComboBox>
             </StackPanel>
 
             <StackPanel>
                 <TextBlock Text="Obowiązki" FontSize="30"/>
-                <TextBox Height="30" x:Name="Responsibilities_TextBox"/>
+                <TextBox x:Name="Responsibilities_TextBox" Width="200" Height="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
 

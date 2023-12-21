@@ -1,0 +1,101 @@
+﻿<Page x:Class="EasyWorkDefault.Pages.AnnoucementDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasyWorkDefault.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="AnnoucementDetailsPage">
+
+
+    <Border CornerRadius="20"
+        Background="#366bd6">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Content="{Binding SelectedAnnouncement.Notification_title}"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="30"
+               Background="#325ea8"
+               Grid.ColumnSpan="2"/>
+
+            <Button Click="BackToSearchPage">
+                <StackPanel>
+                    <Image Source="/Pages/back_arrow.png" Width="50"/>
+                </StackPanel>
+                <Button.Background>
+                    <SolidColorBrush Color="Transparent"/>
+                </Button.Background>
+            </Button>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="20">
+                <StackPanel>
+                    <TextBlock Text="{Binding SelectedAnnouncement.notification_descript}" FontSize="30"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Position:"/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Notification_work_position_name}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Poziom pracy"/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Job_level_name}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Typ umowy: "/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Contract_type_name}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Wymiar pracy: "/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Employment_dimensions_name}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Wynagrodzenie: "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SelectedAnnouncement.Salary_range_end}" FontSize="20" />
+                        <TextBlock Text=" - " FontSize="20"/>
+                        <TextBlock Text="{Binding SelectedAnnouncement.Salary_range_start}" FontSize="20"/>
+                        <TextBlock Text=" zł." FontSize="20"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Dni pracy"/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Working_days}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Czas pracy: "/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding SelectedAnnouncement.Working_hours_start, StringFormat='{}{0:hh\\:mm}'}" FontSize="20"/>
+                        <TextBlock Text=" - " FontSize="20"/>
+                        <TextBlock Text="{Binding SelectedAnnouncement.Working_hours_end, StringFormat='{}{0:hh\\:mm}'}" FontSize="20"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Data wygaśnięcia: "/>
+                    <TextBlock Text="{Binding SelectedAnnouncement.Date_of_expiry_end, StringFormat='{}{0:yyyy-MM-dd}'}" FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Button Content="Aplikuję" Style="{StaticResource LoginLogoutButtonTheme}"/>
+                    <Button Content="Dodaj do ulubionych" Style="{StaticResource LoginLogoutButtonTheme}" Click="AddToLiked"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>

@@ -29,7 +29,6 @@ using System;
         {
             LanguageSkills = new ObservableCollection<LanguageSkill>();
             InitializeComponent();
-            InitializeLanguageSkillForm();
 
             userName.Text = user.Name;
             userSurname.Text = user.Surname;
@@ -49,7 +48,7 @@ using System;
 
         private void AddEditedDataToDatabase(object sender, RoutedEventArgs e)
         {
-           
+
             User updatedUser = new User
             {
                 Name = userName.Text,
@@ -64,63 +63,12 @@ using System;
                 WorkExperience = userWorkExperience.Text,
                 Education = userEducation.Text,
                 Skills = userSkills.Text,
-                Courses = userCourses.Text
+                Courses = userCourses.Text,
+                LanguageSkills = languageSkillsComboBox.Text,
             };
-
-            foreach (var element in languageSkillsStackPanel.Children)
-            {
-                if (element is StackPanel languageSkillForm)
-                {
-                    TextBox languageTextBox = (TextBox)languageSkillForm.Children[0];
-                    ComboBox levelComboBox = (ComboBox)languageSkillForm.Children[1];
-
-                    updatedUser.LanguageSkills.Add(new LanguageSkill { Language = languageTextBox.Text, Level = levelComboBox.Text });
-                }
-            }
-
 
             Database.UpdateUserData(updatedUser);
             MessageBox.Show("Dane zaktualizowane i zapisane do bazy danych.");
-        }
-
-        private void AddLanguageSkill(object sender, RoutedEventArgs e)
-        {
-            InitializeLanguageSkillForm();
-        }
-
-        private void InitializeLanguageSkillForm()
-        {
-
-            StackPanel languageSkillForm = new StackPanel { Background = Brushes.AliceBlue };
-            TextBox languageSkillTextBox = new TextBox { Name = $"userLanguageSkill{languageSkillCounter}", FontSize = 20 };
-            ComboBox languageSkillComboBox = new ComboBox { Name = $"userLanguageSkillLevel{languageSkillCounter}" };
-            languageSkillComboBox.Items.Add("poziom A1");
-            languageSkillComboBox.Items.Add("poziom A2");
-            languageSkillComboBox.Items.Add("poziom B1");
-            languageSkillComboBox.Items.Add("poziom B2");
-            languageSkillComboBox.Items.Add("poziom C1");
-            languageSkillComboBox.Items.Add("poziom C2");
-
-            languageSkillForm.Children.Add(languageSkillTextBox);
-            languageSkillForm.Children.Add(languageSkillComboBox);
-
-            if (languageSkillsStackPanel.Children.Count > 0)
-            {
-                languageSkillsStackPanel.Children.Insert(languageSkillsStackPanel.Children.Count - 1, languageSkillForm);
-            }
-            else
-            {
-                languageSkillsStackPanel.Children.Add(languageSkillForm);
-            }
-
-            LanguageSkills.Add(new LanguageSkill
-            {
-                Language = languageSkillTextBox.Text,
-                Level = languageSkillComboBox.SelectedItem?.ToString()
-            });
-
-
-            languageSkillCounter++;
         }
     }
 }

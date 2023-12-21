@@ -67,7 +67,15 @@
             </StackPanel>
 
             <StackPanel x:Name="languageSkillsStackPanel" Grid.Row="11" Grid.Column="0" Background="AliceBlue">
-                <Button Content="Dodaj kolejny język" Click="AddLanguageSkill"/>
+                <Label Content="Angielski"/>
+                <ComboBox x:Name="languageSkillsComboBox">
+                    <ComboBoxItem Content="A1"/>
+                    <ComboBoxItem Content="A2"/>
+                    <ComboBoxItem Content="B1"/>
+                    <ComboBoxItem Content="B2"/>
+                    <ComboBoxItem Content="C1"/>
+                    <ComboBoxItem Content="C2"/>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Row="12" Grid.Column="0" Background="AliceBlue">

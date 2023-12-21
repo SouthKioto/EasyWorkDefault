@@ -21,31 +21,30 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-
             <Label Content="EasyWork"
-            HorizontalContentAlignment="Center"
-            VerticalContentAlignment="Center"
-            FontSize="30"
-            Background="#325ea8"
-            />
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="30"
+                    Background="#325ea8"/>
 
             <StackPanel Grid.Row="1" Background="#325ea8">
                 <RadioButton Content="Home"
-                      Height="50"
-                      FontSize="15"
-                      Style="{StaticResource MenuButtonTheme}"
-                      IsChecked="True"/>
+                              Height="50"
+                              FontSize="15"
+                              Style="{StaticResource MenuButtonTheme}"
+                              IsChecked="True"/>
 
-                <RadioButton Content="Discover"
-                      Height="50"
-                      FontSize="15"
-                      Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Salary calculator"
+                              Height="50"
+                              FontSize="15"
+                              Style="{StaticResource MenuButtonTheme}"/>
 
 
-                <RadioButton Content="Your Work"
-                      Height="50"
-                      FontSize="15"
-                      Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="CV Creator"
+                              Height="50"
+                              FontSize="15"
+                              Style="{StaticResource MenuButtonTheme}"
+                              IsEnabled="False"/>   
 
                 <Button x:Name="AdminPageButton"
                         Height="50"
@@ -53,7 +52,7 @@
                         Style="{StaticResource LoginLogoutButtonTheme}"
                         Margin="0,260,0,0"
                         Visibility="Hidden"
-                        Content="Admin Page"/>            
+                        Content="Admin Page"/>
 
                 <Button x:Name="UserUiButton"
                       Height="50"
@@ -63,14 +62,17 @@
 
             </StackPanel>
 
-            <TextBox Grid.Column="1"
-              Width="250"
-              Height="40"
-              VerticalContentAlignment="Center"
-              HorizontalAlignment="Left"
-              Margin="5"
-              Style="{StaticResource SearchBarTheme}"
-              />
+            <Border Grid.Column="1" CornerRadius="100" Margin="15, 0, 0, 0">
+                <TextBox Width="250"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     x:Name="SearchBar"
+                     Background="#778af7"
+                     KeyDown="Search_KeyDown_SearchPage"/>
+            </Border>
+
 
 
             <Frame Grid.Row="1" 

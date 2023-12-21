@@ -62,5 +62,10 @@ namespace EasyWorkDefault.Pages
         {
             PageMainView.Navigate(new AddAdvertView(currentUser));
         }
+
+        private void DisplayLikedAnnoucemends(object sender, RoutedEventArgs e)
+        {
+            PageMainView.Navigate(new LikedAnnoucemends());
+        }
     }
 }

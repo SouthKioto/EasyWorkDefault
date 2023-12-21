@@ -9,7 +9,7 @@
       Title="UserListView">
 
     <Grid>
-        <ListView x:Name="UserListView_Display">
+        <ListView x:Name="UserListView_Display" MouseDoubleClick="ShowUserData">
 
             <ListView.View>
                 <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">

@@ -1,4 +1,5 @@
 ﻿using EasyWorkDefault.Classes;
+using EasyWorkDefault.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,7 +25,6 @@ namespace EasyWorkDefault.View
     public partial class AnnoucementListView : Page
     {
         readonly ObservableCollection<NotificationoOfWork> _notification;
-        readonly ObservableCollection<NotificationoOfWork> _user;
         public AnnoucementListView()
         {
             InitializeComponent();
@@ -45,6 +45,43 @@ namespace EasyWorkDefault.View
             else
             {
                 MessageBox.Show("No item selected", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void RemoveAnnoucementDataFromDatabase(object sender, RoutedEventArgs e)
+        {
+            if (AnnoucementListView_Display.SelectedItems.Count > 0)
+            {
+                if (AnnoucementListView_Display.SelectedItem != null)
+                {
+                    int notificationId = ((NotificationoOfWork)AnnoucementListView_Display.SelectedItems[0]).NotificationId;
+
+                    var removedAnnoucement = _notification.FirstOrDefault(n => n.NotificationId == notificationId);
+                    if (removedAnnoucement != null)
+                    {
+                        _notification.Remove(removedAnnoucement);
+
+                        AnnoucementListView_Display.ItemsSource = null;
+                        AnnoucementListView_Display.ItemsSource = _notification;
+                    }
+
+                    Data.Database.RemoveAnnoucementDataFromDatabase(notificationId);
+                }
+            }
+        }
+
+        private void EditAnnoucementDataFromDatabase(object sender, RoutedEventArgs e)
+        {
+            if (AnnoucementListView_Display.SelectedItems.Count > 0)
+            {
+                if (AnnoucementListView_Display.SelectedItem != null)
+                {
+                    int notificationId = ((NotificationoOfWork)AnnoucementListView_Display.SelectedItems[0]).NotificationId;
+                    var existingAdvert = _notification.FirstOrDefault(n => n.NotificationId == notificationId);
+
+                    EditWindowAnnoucement editWindow = new EditWindowAnnoucement(existingAdvert);
+                    editWindow.ShowDialog();
+                }
             }
         }
     }

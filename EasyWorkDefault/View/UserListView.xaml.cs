@@ -29,5 +29,21 @@ namespace EasyWorkDefault.View
             _users = new ObservableCollection<User>(Data.Database.GetAllUsers());
             UserListView_Display.ItemsSource = _users;
         }
+
+        private void ShowUserData(object sender, MouseButtonEventArgs e)
+        {
+            var listView = (ListView)sender;
+
+            if (listView != null)
+            {
+                var user = (User)listView.SelectedItem;
+                string mess = "Imie: " + user.Name + "\nNazwisko: " + user.Surname + "\nBirth Date: " + user.BirthDate + "\nEmail: " + user.Email + "\nIsAdmin: " + user.IsAdmin;
+                MessageBox.Show(mess, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("No item selected", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 }
